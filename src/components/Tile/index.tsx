@@ -21,6 +21,7 @@ export const Tile = memo(() => {
   // width of the flat list for calculating the offset
   const [flatListWidth, setFlatListWidth] = useState(0);
 
+  // fetch comments from the API
   const fetchComments = async () => {
     const response = await fetch(
       'https://jsonplaceholder.typicode.com/comments?_limit=30',
@@ -30,24 +31,32 @@ export const Tile = memo(() => {
     setComments(data);
   };
 
+  // parse comments for the flat list
   const commentsParsed = comments.map(comment => ({
     email: comment.email,
     key: comment.id.toString(),
   }));
 
+  // separator between list items
   const separator = <View style={styles.separator} />;
 
+  // reference to the flat list
   const refList = useRef<FlatList>(null);
 
+  // handle press on the list item
   const handlePress = (index: number) => {
-    let offset = LIST_GAP + LIST_GAP + LIST_GAP * index; // header + footer + inner gap
+    // calculate the offset for the flat list: header + footer + gap * index
+    let offset = LIST_GAP + LIST_GAP + LIST_GAP * index;
 
+    // calculate the offset for the flat list: sum of the widths of the previous items
     for (let i = 0; i < index; i++) {
       offset += itemWidths[i] || 0;
     }
 
+    // calculate the offset for the flat list: center the item in the flat list
     offset += ((itemWidths[index] || 0) - flatListWidth) / 2;
 
+    // scroll to the offset
     refList.current?.scrollToOffset({
       offset,
       animated: true,
