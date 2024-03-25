@@ -1,14 +1,21 @@
 import React from 'react';
-import {SafeAreaView} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
-import {Tile} from './src/components/Tile';
+import {Navigation} from '@/routes/navigation';
 
 const App = () => (
   <SafeAreaProvider>
-    <SafeAreaView>
-      <Tile />
+    <SafeAreaView style={styles.container}>
+      <Navigation />
     </SafeAreaView>
   </SafeAreaProvider>
 );
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#292929',
+  },
+});
 
 export default App;

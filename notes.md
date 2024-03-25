@@ -1,5 +1,3 @@
 - flatList
 - virtualizedList
 - flashList
-
-
