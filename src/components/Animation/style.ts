@@ -2,10 +2,10 @@ import {StyleSheet} from 'react-native';
 
 export const useStyles = () =>
   StyleSheet.create({
-    listContainer: {
-      height: 40,
+    container: {
+      alignSelf: 'center',
     },
-    separator: {
-      width: 8,
+    item: {
+      backgroundColor: '#fcba03',
     },
   });

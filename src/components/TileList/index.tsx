@@ -2,9 +2,12 @@ import {TileItem} from '@/components/TileList/components/TileItem';
 import {TileListSeparator} from '@/components/TileList/components/TileListSeparator';
 import {IComment} from '@/components/TileList/types';
 import React, {memo, useEffect, useMemo, useRef, useState} from 'react';
-import {ActivityIndicator, FlatList, ScrollView} from 'react-native';
+import {ActivityIndicator, FlatList, View} from 'react-native';
+import {useStyles} from '@/components/TileList/style';
 
 export const TileList = memo(() => {
+  const styles = useStyles();
+
   const refList = useRef<FlatList>(null);
 
   const [comments, setComments] = useState<IComment[] | null>(null);
@@ -19,7 +22,7 @@ export const TileList = memo(() => {
         const data = await response.json();
         setComments(data);
       })();
-    }, 1000);
+    }, 0); // test delay
   }, []);
 
   const commentsParsed = useMemo(
@@ -33,19 +36,19 @@ export const TileList = memo(() => {
   );
 
   if (!comments) {
-    return <ActivityIndicator />;
+    return <ActivityIndicator style={styles.listContainer} />;
   }
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
+    <View style={styles.listContainer}>
       <FlatList
         ref={refList}
         horizontal
         showsHorizontalScrollIndicator={false}
         data={commentsParsed}
         ItemSeparatorComponent={TileListSeparator}
-        ListHeaderComponent={<TileListSeparator />}
-        ListFooterComponent={<TileListSeparator />}
+        ListHeaderComponent={TileListSeparator}
+        ListFooterComponent={TileListSeparator}
         renderItem={args => (
           <TileItem
             {...args}
@@ -55,6 +58,6 @@ export const TileList = memo(() => {
           />
         )}
       />
-    </ScrollView>
+    </View>
   );
 });

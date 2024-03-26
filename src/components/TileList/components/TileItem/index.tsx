@@ -31,7 +31,7 @@ export const TileItem = memo(
 
       setTimeout(() => {
         navigation.navigate('TileDetails', {name: item.email.split('@')[0]});
-      }, 1000);
+      }, 500);
     }, [index, item.email, item.id, navigation, scrollRef, setActiveId, width]);
 
     return (

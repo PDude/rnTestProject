@@ -7,6 +7,7 @@ export const useStyles = () =>
       height: '100%',
       paddingVertical: 16,
       paddingHorizontal: 8,
+      gap: 80,
     },
     actions: {
       flexDirection: 'row',

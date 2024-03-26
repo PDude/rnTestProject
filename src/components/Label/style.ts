@@ -8,6 +8,8 @@ export const useStyles = () =>
       padding: 8,
       borderWidth: 2,
       borderColor: 'transparent',
+      minHeight: 40,
+      justifyContent: 'center',
     },
     activeItem: {
       borderColor: 'white',
