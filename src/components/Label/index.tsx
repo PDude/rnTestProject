@@ -18,7 +18,7 @@ export const Label = memo(
       <TouchableOpacity onPress={onPress} activeOpacity={activeOpacity}>
         <View
           onLayout={onLayout}
-          style={[styles.container, isActive && styles.activeItem]}>
+          style={[styles.wrapper, isActive && styles.activeItem]}>
           <Text style={styles.text}>{value}</Text>
         </View>
       </TouchableOpacity>

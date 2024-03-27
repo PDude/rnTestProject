@@ -2,7 +2,7 @@ import {StyleSheet} from 'react-native';
 
 export const useStyles = () =>
   StyleSheet.create({
-    container: {
+    wrapper: {
       backgroundColor: '#333',
       borderRadius: 8,
       padding: 8,

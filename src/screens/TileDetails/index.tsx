@@ -1,4 +1,5 @@
 import {Animation} from '@/components/Animation';
+import {Gesturing} from '@/components/Gesturing';
 import {Label} from '@/components/Label';
 import {
   RootStackNavigationProps,
@@ -20,13 +21,14 @@ export const TileDetailsScreen = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={styles.wrapper}>
       <View style={styles.actions}>
         <Label value={'To the list'} onPress={navigateToList} />
         <Label value={params?.name} activeOpacity={1} />
       </View>
 
       <Animation />
+      <Gesturing />
     </View>
   );
 };

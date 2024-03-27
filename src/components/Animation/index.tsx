@@ -1,26 +1,23 @@
-import {useStyles} from '@/components/Animation/style';
 import React, {memo, useEffect} from 'react';
-import {View} from 'react-native';
+import {StyleSheet} from 'react-native';
 import Animated, {
+  SharedValue,
   useAnimatedStyle,
   useSharedValue,
   withRepeat,
   withSpring,
-  SharedValue,
 } from 'react-native-reanimated';
 
-const SIZE = 100;
+const SIZE = 80;
 
 export const Animation = memo(() => {
-  const styles = useStyles();
-
   const handlerRotation = (progress: SharedValue<number>) => {
     'worklet';
     return `${progress.value * 2 * Math.PI}rad`;
   };
 
   const progress = useSharedValue(1);
-  const scale = useSharedValue(2);
+  const scale = useSharedValue(1.5);
 
   const reanimatedStyles = useAnimatedStyle(() => {
     return {
@@ -37,11 +34,14 @@ export const Animation = memo(() => {
     }, 500);
   }, [progress, scale]);
 
-  return (
-    <View style={styles.container}>
-      <Animated.View
-        style={[{width: SIZE, height: SIZE}, styles.item, reanimatedStyles]}
-      />
-    </View>
-  );
+  return <Animated.View style={[styles.item, reanimatedStyles]} />;
+});
+
+const styles = StyleSheet.create({
+  item: {
+    alignSelf: 'center',
+    backgroundColor: '#fcba03',
+    width: SIZE,
+    height: SIZE,
+  },
 });

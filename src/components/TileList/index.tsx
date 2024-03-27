@@ -36,11 +36,11 @@ export const TileList = memo(() => {
   );
 
   if (!comments) {
-    return <ActivityIndicator style={styles.listContainer} />;
+    return <ActivityIndicator style={styles.listWrapper} />;
   }
 
   return (
-    <View style={styles.listContainer}>
+    <View style={styles.listWrapper}>
       <FlatList
         ref={refList}
         horizontal

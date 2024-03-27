@@ -7,7 +7,7 @@ export const HomeScreen = () => {
   const styles = useStyles();
 
   return (
-    <View style={styles.container}>
+    <View style={styles.wrapper}>
       <TileList />
     </View>
   );
